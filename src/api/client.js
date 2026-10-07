@@ -6,6 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL
  */
 export async function apiConnect(endpoint, options = {}) {
     const token = localStorage.getItem("token")
+    console.log("Running api connect")
 
     const headers = {
         "Content-Type": "application/json",

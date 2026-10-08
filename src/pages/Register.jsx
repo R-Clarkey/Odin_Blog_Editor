@@ -13,7 +13,6 @@ export default function Register() {
     e.preventDefault();
 
     try {
-        console.log("Testing")
         const data = await apiConnect("/auth/register", {
             method: "POST",
             body: JSON.stringify({

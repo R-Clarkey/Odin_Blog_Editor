@@ -12,7 +12,6 @@ export default function Login() {
     e.preventDefault()
 
     try {
-      console.log("Testing")
       const data = await apiConnect("/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),

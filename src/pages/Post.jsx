@@ -14,7 +14,6 @@ export default function Post() {
             try {
                 const data = await getPost(id)
                 setPost(data)
-                console.log("Post", data)
             } catch (err) {
                 setError(err.message)
             } finally {

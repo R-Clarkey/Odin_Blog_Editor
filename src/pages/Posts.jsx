@@ -13,7 +13,6 @@ export default function Posts() {
 			try {
 				const data = await getMyPosts()
 				setPosts(data)
-				console.log("Posts", data)
 			} catch (err) {
 				setError(err.message)
 			} finally {
@@ -25,7 +24,6 @@ export default function Posts() {
 	}, [])
 
 	async function handleToggle(post) {
-		console.log(import.meta.env.VITE_API_URL)
 		try {
 			const changes = {
 				published: !post.published,

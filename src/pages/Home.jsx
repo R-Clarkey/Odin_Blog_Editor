@@ -6,7 +6,7 @@ export default function Home() {
             <main>
                 <section className="hero">
                     <h1>Welcome to Your Journey</h1>
-                    <p>Post your own stories or read from others.</p>
+                    <p>Post your own stories or read others.</p>
                     <Link to="/posts">Read the latest posts</Link>
                 </section>
             </main>

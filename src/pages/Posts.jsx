@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getMyPosts, updatePost } from "../api/posts.js"
 import "../styles/posts.css"
 
@@ -66,6 +67,7 @@ export default function Posts() {
 						<button onClick={() => handleToggle(post)} className="publish-button">
 							{post.published ? "Published" : "Draft"}
 						</button>
+						<Link to={`/post/${post.id}`}>View post</Link>
 					</li>
 				))}
 			</ul>

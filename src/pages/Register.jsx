@@ -12,7 +12,8 @@ export default function Register() {
     const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {   
+    try {
+        console.log("Testing")
         const data = await apiConnect("/auth/register", {
             method: "POST",
             body: JSON.stringify({

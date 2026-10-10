@@ -51,8 +51,8 @@ export default function Posts() {
 		<main className="posts-page">
 			<ul className="posts-grid">
 				{posts.map((post) => (
-					<Link className="post-link" to={`/post/${post.id}`}>
-						<li key={post.id} className="post-card">
+					<li key={post.id} className="post-card">
+						<Link className="post-link" to={`/post/${post.id}`}>
 							<h2 className="post-title">{post.title}</h2>
 							<p className="post-content">
 								{post.content.length > 120
@@ -63,14 +63,20 @@ export default function Posts() {
 								<span>{post.author?.name}</span>
 								<span>{new Date(post.createdAt).toLocaleDateString()}</span>
 							</div>
-							<button onClick={() => handleToggle(post)} className="publish-button">
-								{post.published ? "Published" : "Draft"}
-							</button>
-						</li>
-					</Link>
-
+						</Link>
+						<button
+							type="button"
+							className="publish-button"
+							onClick={() => {
+								handleToggle(post)
+							}}
+						>
+							{post.published ? "Published" : "Draft"}
+						</button>
+					</li>
 				))}
 			</ul>
 		</main>
 	)
+
 }

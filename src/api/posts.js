@@ -7,7 +7,9 @@ export const getMyPosts = () =>
     apiConnect("/posts/me")
 
 export const getPost = (id) =>
-	apiConnect(`/posts/${id}`)
+	apiConnect(`/posts/${id}`, {
+		method: "GET"
+	})
 
 export const createPost = (post, token) =>
 	apiConnect("/posts", {

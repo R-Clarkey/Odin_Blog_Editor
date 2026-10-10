@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPost } from "../api/posts"
 import { useParams } from "react-router-dom"
+import "../styles/post.css"
 
 export default function Post() {
     const { id } = useParams()
@@ -12,6 +13,7 @@ export default function Post() {
     useEffect(() => {
         async function loadPost() {
             try {
+                console.log("REACHED")
                 const data = await getPost(id)
                 setPost(data)
             } catch (err) {
@@ -25,8 +27,33 @@ export default function Post() {
     }, [])
 
 
-    return (
-        <>
-        </>
-    )
+  return (    
+    <main className="post-page">     
+        <article className="post-detail">        
+            <header className="post-detail-header">          
+                <h1 className="post-detail-title">{post.title}</h1>          
+                <div className="post-meta">            
+                <span>{post.author?.name ?? "Unknown author"}</span>            
+                <time dateTime={post.createdAt}>              
+                    {new Date(post.createdAt).toLocaleDateString()}            
+                </time>          
+                </div>        
+            </header>
+            <p className="post-detail-content">{post.content}</p>
+            <span className={`post-status ${post.published ? "is-published" : ""}`}>          
+                {post.published ? "Published" : "Draft"}        
+            </span>
+            <section className="post-comments">          
+                <h2>Comments</h2>          
+                {post.comments?.length ? (            
+                    post.comments.map((comment) => (              
+                    <p key={comment.id}>{comment.content}</p>            
+                ))          
+            ) : (            
+                <p>No comments yet.</p>          
+            )}        
+            </section>      
+        </article>    
+    </main>  
+    );
 }

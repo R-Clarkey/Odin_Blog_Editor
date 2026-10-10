@@ -11,6 +11,11 @@
 	gap: 1.5rem;
 }
 
+.post-link{
+	color: inherit;
+	text-decoration: none;
+}
+
 .post-card {
 	background: var(--secondary-background);
 	border: 1px solid rgba(148, 163, 184, 0.15);

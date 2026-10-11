@@ -3,6 +3,16 @@ import { Link } from "react-router-dom"
 import { getMyPosts, updatePost } from "../api/posts.js"
 import "../styles/posts.css"
 
+function getPreviewText(html, maxLength = 120) {
+	const temp = document.createElement("div")
+	temp.innerHTML = html
+	const text = temp.textContent || temp.innerText || ""
+
+	return text.length > maxLength
+		? text.slice(0, maxLength) + "..."
+		: text
+}
+
 export default function Posts() {
 	const [posts, setPosts] = useState([])
 	const [error, setError] = useState("")
@@ -43,7 +53,6 @@ export default function Posts() {
 		}
 	}
 
-
 	if (loading) return <p>Loading posts…</p>
 	if (error) return <p role="alert">{error}</p>
 
@@ -55,9 +64,7 @@ export default function Posts() {
 						<Link className="post-link" to={`/post/${post.id}`}>
 							<h2 className="post-title">{post.title}</h2>
 							<p className="post-content">
-								{post.content.length > 120
-									? post.content.slice(0, 120) + "..."
-									: post.content}
+								{getPreviewText(post.content, 120)}
 							</p>
 							<div className="post-meta">
 								<span>{post.author?.name}</span>
@@ -67,9 +74,7 @@ export default function Posts() {
 						<button
 							type="button"
 							className="publish-button"
-							onClick={() => {
-								handleToggle(post)
-							}}
+							onClick={() => handleToggle(post)}
 						>
 							{post.published ? "Published" : "Draft"}
 						</button>
@@ -78,5 +83,4 @@ export default function Posts() {
 			</ul>
 		</main>
 	)
-
 }

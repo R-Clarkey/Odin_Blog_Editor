@@ -22,6 +22,8 @@ export async function apiConnect(endpoint, options = {}) {
 
     const data = await response.json().catch(() => null)
 
+    console.log(data, "data\n", response, "response\n", options, "options\n")
+
     if (!response.ok) {
         throw new Error(data?.message || `Request failed (${response.status})`)
     }

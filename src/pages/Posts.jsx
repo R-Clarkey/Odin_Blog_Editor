@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getMyPosts, updatePost } from "../api/posts.js"
 import "../styles/posts.css"
 
 function getPreviewText(html, maxLength = 120) {
 	const temp = document.createElement("div")
 	temp.innerHTML = html
-	const text = temp.textContent || temp.innerText || ""
+	const text = temp.textContent || temp.innerText || "No content added"
 
 	return text.length > maxLength
 		? text.slice(0, maxLength) + "..."
@@ -14,6 +14,7 @@ function getPreviewText(html, maxLength = 120) {
 }
 
 export default function Posts() {
+	const navigate = useNavigate()
 	const [posts, setPosts] = useState([])
 	const [error, setError] = useState("")
 	const [loading, setLoading] = useState(true)
@@ -58,16 +59,19 @@ export default function Posts() {
 
 	return (
 		<main className="posts-page">
+			<button className="create-btn" onClick={() => navigate("/posts/create")}>
+				Create a post +
+			</button>
 			<ul className="posts-grid">
 				{posts.map((post) => (
 					<li key={post.id} className="post-card">
 						<Link className="post-link" to={`/post/${post.id}`}>
-							<h2 className="post-title">{post.title}</h2>
+							<h2 className="post-title">{post.title || "Default title"}</h2>
 							<p className="post-content">
 								{getPreviewText(post.content, 120)}
 							</p>
 							<div className="post-meta">
-								<span>{post.author?.name}</span>
+								<span className="post-author">{post.author?.name}</span>
 								<span>{new Date(post.createdAt).toLocaleDateString()}</span>
 							</div>
 						</Link>

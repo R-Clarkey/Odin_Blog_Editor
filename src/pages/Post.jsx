@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Editor } from "@tinymce/tinymce-react"
 import DOMPurify from "dompurify"
-import { getPost, updatePost } from "../api/posts"
+import { getPost, updatePost, deletePost } from "../api/posts"
 import "../styles/post.css"
 
 export default function Post() {
 	const { id } = useParams()
+	const navigate = useNavigate()
 	const [post, setPost] = useState(null)
 	const [content, setContent] = useState("")
 	const [isEditing, setIsEditing] = useState(false)
@@ -50,7 +51,18 @@ export default function Post() {
 		setIsEditing(false)
 	}
 
-    
+	async function handleRemove() {
+		const confirmed = window.confirm("Delete this post?")
+		if (!confirmed) return
+
+		try {
+			await deletePost(id)
+			navigate("/posts")
+			console.log("Reached")
+		} catch (error) {
+			console.error("Delete failed:", error)
+		}
+	}
 
 	if (loading) return <p>Loading...</p>
 	if (error) return <p>Error: {error}</p>
@@ -58,9 +70,13 @@ export default function Post() {
 
 	return (
 		<main className="post-page">
+			<button className="back-btn" onClick={() => navigate("/posts")}>
+				← Back to Posts
+			</button>
+
 			<article className="post-detail">
 				<header className="post-detail-header">
-					<h1 className="post-detail-title">{post.title}</h1>
+					<h1 className="post-detail-title">{post.title || "Default title"}</h1>
 
 					<div className="post-actions">
 						<button
@@ -75,6 +91,10 @@ export default function Post() {
 								Save
 							</button>
 						)}
+
+						<button className="remove-btn" onClick={handleRemove}>
+							Remove
+						</button>
 					</div>
 				</header>
 
@@ -91,7 +111,7 @@ export default function Post() {
 				) : (
 					<div
 						className="post-detail-content"
-						dangerouslySetInnerHTML={{ __html: content }}
+						dangerouslySetInnerHTML={{ __html: content || "No content added" }}
 					/>
 				)}
 

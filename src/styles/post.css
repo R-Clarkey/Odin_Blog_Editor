@@ -1,8 +1,32 @@
 .post-page {
 	min-height: 100vh;
 	padding: 2rem;
-	background: var(--main-background);
 	color: var(--text);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.back-btn {
+	align-self: flex-end;
+	padding: 0.65rem 1rem;
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-radius: 10px;
+	background: rgba(148, 163, 184, 0.12);
+	color: var(--text);
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.back-btn:hover {
+	transform: translateY(-1px);
+	background: rgba(148, 163, 184, 0.18);
+}
+
+.back-btn:active {
+	transform: translateY(0);
 }
 
 .post-detail {
@@ -67,15 +91,6 @@
 	opacity: 0.9;
 }
 
-.post-actions .cancel-btn {
-	background: rgba(148, 163, 184, 0.18);
-	color: var(--text);
-}
-
-.post-actions .cancel-btn:hover {
-	background: rgba(148, 163, 184, 0.28);
-}
-
 .post-actions .save-btn {
 	background: var(--accent-soft);
 	color: white;
@@ -90,16 +105,17 @@
 	color: var(--muted);
 	font-size: 1.05rem;
 	line-height: 1.8;
-	white-space: pre-wrap;
 }
 
-.post-meta {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	font-size: 0.9rem;
-	color: var(--muted);
+.post-detail-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 12px;
+}
+
+.post-detail-content a {
+	color: var(--accent);
+	text-decoration: underline;
 }
 
 .post-status {
@@ -115,6 +131,16 @@
 .post-status.is-published {
 	background: var(--accent-soft);
 	color: white;
+}
+
+.post-actions .remove-btn {
+	background: rgba(239, 68, 68, 0.18);
+	color: #fca5a5;
+	border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.post-actions .remove-btn:hover {
+	background: rgba(239, 68, 68, 0.28);
 }
 
 @media (max-width: 600px) {
@@ -137,4 +163,9 @@
 	.post-actions button {
 		flex: 1;
 	}
+
+	.back-btn {
+		width: fit-content;
+	}
 }
+

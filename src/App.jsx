@@ -5,6 +5,7 @@ import "./styles/authPage.css"
 import Home from './pages/Home'
 import Posts from './pages/Posts'
 import Post from './pages/Post'
+import NewPost from './pages/NewPost'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import About from './pages/About'
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path="/posts" element={<ProtectedRoute><Posts /></ProtectedRoute>} />
+        <Route path="/posts/create" element={<ProtectedRoute><NewPost /></ProtectedRoute>} />
         <Route path="/post/:id" element={<ProtectedRoute><Post /></ProtectedRoute>} />
         <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />

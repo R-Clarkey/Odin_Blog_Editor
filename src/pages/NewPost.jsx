@@ -11,6 +11,7 @@ export default function NewPost() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
+            // eslint-disable-next-line no-unused-vars
             const post = await apiConnect("/posts", {
                 method: "POST",
                 body: JSON.stringify({

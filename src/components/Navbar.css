@@ -4,7 +4,7 @@
 	align-items: center;
 	padding: 1rem 1.5rem;
 	background: var(--secondary-background);
-	border-bottom: 1px solid #374151;
+	border-bottom: 2px solid #374151;
 }
 
 .nav-title {

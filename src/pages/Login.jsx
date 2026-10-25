@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -18,6 +19,7 @@ export default function Login() {
       localStorage.setItem("token", data.token);
       navigate("/")
     } catch (error) {
+      setError(error.message)
       console.log(error.message)
     }
   }
@@ -42,6 +44,8 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+				{error && <p className="error-message">{error}</p>}
 
         <button type="submit">Login</button>
       </form>

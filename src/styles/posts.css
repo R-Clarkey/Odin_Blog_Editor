@@ -16,9 +16,9 @@
 .create-btn{
 	align-self: flex-end;
 	padding: 0.65rem 1rem;
-	border: 1px solid rgba(148, 163, 184, 0.2);
+	border: 1px solid var(--button-border);
 	border-radius: 10px;
-	background: rgba(148, 163, 184, 0.12);
+	background: var(--button-background);
 	color: var(--text);
 	font: inherit;
 	font-weight: 600;
@@ -28,7 +28,8 @@
 
 .create-btn:hover{
 	transform: translateY(-1px);
-	background: rgba(148, 163, 184, 0.18);
+	background: var(--button-background-hover);
+	border: 1px solid var(--button-border-hover);
 }
 
 .create-btn:active{
@@ -41,8 +42,8 @@
 }
 
 .post-card {
-	background: var(--secondary-background);
-	border: 1px solid rgba(148, 163, 184, 0.15);
+	background: var(--card-background);
+	border: 1px solid var(--card-border-color);
 	border-radius: 16px;
 	padding: 1.25rem;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -53,7 +54,7 @@
 }
 
 .post-card:hover {
-	transform: translateY(-4px);
+	transform: translateY(-2px);
 	border-color: var(--accent);
 }
 

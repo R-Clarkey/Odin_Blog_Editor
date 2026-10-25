@@ -1,16 +1,35 @@
-# React + Vite
+# Blog API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A RESTful Blog API built as part of The Odin Project’s Node.js curriculum. The project focuses on creating a functioning API with basic CRUD operations for blog posts, comments, and user/admin content management.
 
-Currently, two official plugins are available:
+![Screenshot](assets/editor-landing.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Create, read, update, and delete blog posts
+- Viewing post details
+- Grouping posts by author
+- Authenticate users with JWT
+- Protected routes
+- Input validation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Skills demonstrated
 
-## Expanding the ESLint configuration
+- **REST API design:** building endpoints for blog content and comments
+- **Backend development:** creating Express routes, controllers, and middleware
+- **Database management:** storing and retrieving data with PostgreSQL
+- **Authentication:** securing routes with JWT-based login
+- **Data validation:** checking request data before saving it
+- **Error handling:** handling invalid requests and missing resources
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+- Node.js
+- Express
+- PostgreSQL
+- React
+- JSON Web Tokens (JWT)
+
+[Blog Backend](https://github.com/R-Clarkey/Odin_Blog_Backend)
+
+[Blog Viewer](https://github.com/R-Clarkey/Odin_Blog_Viewer)
